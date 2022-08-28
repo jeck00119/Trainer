@@ -2,7 +2,6 @@
 using MetroFramework.Forms;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
@@ -16,6 +15,21 @@ namespace Trainer
 {
     public partial class Trainer_Form : MetroForm
     {
+
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        static extern bool VirtualFreeEx(
+           IntPtr hProcess,
+           UIntPtr lpAddress,
+           UIntPtr dwSize,
+           uint dwFreeType
+       );
+
+
+        [DllImport("User32.dll")]
+        private static extern short GetAsyncKeyState(System.Int32 vKey);
+
+
+
         Mem mem = new Mem();
 
         public IntPtr getHandle()
@@ -32,22 +46,13 @@ namespace Trainer
         string ammoAdress = "ac_client.exe+0x00183828,8,190,428";
         string hpAdress = "ac_client.exe+0x00183828,8,C88,B54";
         bool ProcOpen = false;
-
+        bool alreadyDown = false;
 
         public Trainer_Form()
         {
             InitializeComponent();
-            metroPanel1.Enabled = false;
         }
-        
 
-        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        static extern bool VirtualFreeEx(
-        IntPtr hProcess,
-        UIntPtr lpAddress,
-        UIntPtr dwSize,
-        uint dwFreeType
-        );
 
         string FloatToHex(float f)
         {
@@ -118,13 +123,30 @@ namespace Trainer
             BGWorker.RunWorkerAsync();
         }
 
+        
         private void BGWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             if (ProcOpen)
             {
-                metroPanel1.Enabled = true;
                 ProcOpenLabel.ForeColor = System.Drawing.Color.Green;
                 ProcOpenLabel.Text = "Game Found";
+                Infinite_Ammo.AutoCheck = true;
+                Infinite_Health.AutoCheck = true;
+                Jump.AutoCheck = true;
+                No_Damage.AutoCheck = true;
+
+                if (GetAsyncKeyState((int)Keys.NumPad1) < 0 && alreadyDown == false)
+                {
+                    alreadyDown = true;
+                    Infinite_Health.Checked = !Infinite_Health.Checked;
+                }
+                if (GetAsyncKeyState((int)Keys.NumPad1) == 0 && alreadyDown == true)
+                {
+                    alreadyDown = false;
+
+                }
+
+
             }
 
             if (Infinite_Ammo.Checked)
@@ -142,9 +164,18 @@ namespace Trainer
         {
             if (!ProcOpen)
             {
-                metroPanel1.Enabled = false;
                 ProcOpenLabel.ForeColor = System.Drawing.Color.Red;
                 ProcOpenLabel.Text = "Game Not Found";
+                Infinite_Ammo.Checked = false;
+                Infinite_Ammo.AutoCheck = false;
+                Infinite_Health.Checked = false;
+                Infinite_Health.AutoCheck = false;
+                Jump.Checked = false;
+                Jump.AutoCheck = false;
+                No_Damage.Checked = false;
+                No_Damage.AutoCheck = false;
+
+
             }
 
             BGWorker.RunWorkerAsync();
@@ -205,7 +236,6 @@ namespace Trainer
 
         Globals jump = new Globals();
         Globals damage = new Globals();
-
 
 
     }

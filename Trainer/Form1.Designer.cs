@@ -39,6 +39,10 @@ namespace Trainer
             this.label1 = new System.Windows.Forms.Label();
             this.ProcOpenLabel = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Num_1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Jump)).BeginInit();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +50,7 @@ namespace Trainer
             // Infinite_Ammo
             // 
             this.Infinite_Ammo.AutoSize = true;
-            this.Infinite_Ammo.Location = new System.Drawing.Point(20, 47);
+            this.Infinite_Ammo.Location = new System.Drawing.Point(100, 47);
             this.Infinite_Ammo.Margin = new System.Windows.Forms.Padding(4);
             this.Infinite_Ammo.Name = "Infinite_Ammo";
             this.Infinite_Ammo.Size = new System.Drawing.Size(118, 20);
@@ -57,8 +61,7 @@ namespace Trainer
             // Infinite_Health
             // 
             this.Infinite_Health.AutoSize = true;
-            this.Infinite_Health.BackColor = System.Drawing.Color.DimGray;
-            this.Infinite_Health.Location = new System.Drawing.Point(20, 19);
+            this.Infinite_Health.Location = new System.Drawing.Point(100, 19);
             this.Infinite_Health.Margin = new System.Windows.Forms.Padding(4);
             this.Infinite_Health.Name = "Infinite_Health";
             this.Infinite_Health.Size = new System.Drawing.Size(120, 20);
@@ -69,7 +72,7 @@ namespace Trainer
             // Jump
             // 
             this.Jump.AutoSize = true;
-            this.Jump.Location = new System.Drawing.Point(20, 115);
+            this.Jump.Location = new System.Drawing.Point(100, 103);
             this.Jump.Margin = new System.Windows.Forms.Padding(4);
             this.Jump.Name = "Jump";
             this.Jump.Size = new System.Drawing.Size(63, 20);
@@ -81,7 +84,7 @@ namespace Trainer
             // No_Damage
             // 
             this.No_Damage.AutoSize = true;
-            this.No_Damage.Location = new System.Drawing.Point(20, 76);
+            this.No_Damage.Location = new System.Drawing.Point(100, 75);
             this.No_Damage.Margin = new System.Windows.Forms.Padding(4);
             this.No_Damage.Name = "No_Damage";
             this.No_Damage.Size = new System.Drawing.Size(109, 20);
@@ -92,7 +95,8 @@ namespace Trainer
             // 
             // trackBar_Jump
             // 
-            this.trackBar_Jump.Location = new System.Drawing.Point(104, 111);
+            this.trackBar_Jump.LargeChange = 0;
+            this.trackBar_Jump.Location = new System.Drawing.Point(171, 103);
             this.trackBar_Jump.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar_Jump.Maximum = 5;
             this.trackBar_Jump.Minimum = 1;
@@ -131,6 +135,10 @@ namespace Trainer
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroPanel1.Controls.Add(this.label5);
+            this.metroPanel1.Controls.Add(this.label4);
+            this.metroPanel1.Controls.Add(this.label2);
+            this.metroPanel1.Controls.Add(this.Num_1);
             this.metroPanel1.Controls.Add(this.No_Damage);
             this.metroPanel1.Controls.Add(this.Jump);
             this.metroPanel1.Controls.Add(this.trackBar_Jump);
@@ -141,18 +149,58 @@ namespace Trainer
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(1, 45);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(330, 199);
+            this.metroPanel1.Size = new System.Drawing.Size(434, 199);
             this.metroPanel1.TabIndex = 7;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label5.Location = new System.Drawing.Point(32, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 16);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Num 4";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label4.Location = new System.Drawing.Point(32, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Num 3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label2.Location = new System.Drawing.Point(32, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Num 2";
+            // 
+            // Num_1
+            // 
+            this.Num_1.AutoSize = true;
+            this.Num_1.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.Num_1.Location = new System.Drawing.Point(32, 19);
+            this.Num_1.Name = "Num_1";
+            this.Num_1.Size = new System.Drawing.Size(50, 16);
+            this.Num_1.TabIndex = 6;
+            this.Num_1.Text = "Num 1";
+            // 
             // Trainer_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 258);
+            this.ClientSize = new System.Drawing.Size(435, 258);
             this.Controls.Add(this.ProcOpenLabel);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.label1);
@@ -184,6 +232,10 @@ namespace Trainer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ProcOpenLabel;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Num_1;
     }
 }
 
