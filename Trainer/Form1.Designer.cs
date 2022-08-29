@@ -50,17 +50,19 @@ namespace Trainer
             // Infinite_Ammo
             // 
             this.Infinite_Ammo.AutoSize = true;
+            this.Infinite_Ammo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.Infinite_Ammo.Location = new System.Drawing.Point(100, 47);
             this.Infinite_Ammo.Margin = new System.Windows.Forms.Padding(4);
             this.Infinite_Ammo.Name = "Infinite_Ammo";
             this.Infinite_Ammo.Size = new System.Drawing.Size(118, 20);
             this.Infinite_Ammo.TabIndex = 0;
             this.Infinite_Ammo.Text = "Infinite Ammo";
-            this.Infinite_Ammo.UseVisualStyleBackColor = true;
+            this.Infinite_Ammo.UseVisualStyleBackColor = false;
             // 
             // Infinite_Health
             // 
             this.Infinite_Health.AutoSize = true;
+            this.Infinite_Health.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.Infinite_Health.Location = new System.Drawing.Point(100, 19);
             this.Infinite_Health.Margin = new System.Windows.Forms.Padding(4);
             this.Infinite_Health.Name = "Infinite_Health";
@@ -72,29 +74,32 @@ namespace Trainer
             // Jump
             // 
             this.Jump.AutoSize = true;
+            this.Jump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.Jump.Location = new System.Drawing.Point(100, 103);
             this.Jump.Margin = new System.Windows.Forms.Padding(4);
             this.Jump.Name = "Jump";
             this.Jump.Size = new System.Drawing.Size(63, 20);
             this.Jump.TabIndex = 2;
             this.Jump.Text = "Jump";
-            this.Jump.UseVisualStyleBackColor = true;
+            this.Jump.UseVisualStyleBackColor = false;
             this.Jump.CheckedChanged += new System.EventHandler(this.Jump_CheckedChanged);
             // 
             // No_Damage
             // 
             this.No_Damage.AutoSize = true;
+            this.No_Damage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.No_Damage.Location = new System.Drawing.Point(100, 75);
             this.No_Damage.Margin = new System.Windows.Forms.Padding(4);
             this.No_Damage.Name = "No_Damage";
             this.No_Damage.Size = new System.Drawing.Size(109, 20);
             this.No_Damage.TabIndex = 3;
             this.No_Damage.Text = "No Damage";
-            this.No_Damage.UseVisualStyleBackColor = true;
+            this.No_Damage.UseVisualStyleBackColor = false;
             this.No_Damage.CheckedChanged += new System.EventHandler(this.No_Damage_CheckedChanged);
             // 
             // trackBar_Jump
             // 
+            this.trackBar_Jump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.trackBar_Jump.LargeChange = 0;
             this.trackBar_Jump.Location = new System.Drawing.Point(171, 103);
             this.trackBar_Jump.Margin = new System.Windows.Forms.Padding(4);
@@ -149,7 +154,7 @@ namespace Trainer
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(1, 45);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(434, 199);
+            this.metroPanel1.Size = new System.Drawing.Size(428, 199);
             this.metroPanel1.TabIndex = 7;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -159,6 +164,7 @@ namespace Trainer
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label5.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label5.Location = new System.Drawing.Point(32, 103);
             this.label5.Name = "label5";
@@ -169,6 +175,7 @@ namespace Trainer
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label4.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label4.Location = new System.Drawing.Point(32, 75);
             this.label4.Name = "label4";
@@ -179,6 +186,7 @@ namespace Trainer
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label2.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label2.Location = new System.Drawing.Point(32, 47);
             this.label2.Name = "label2";
@@ -189,6 +197,7 @@ namespace Trainer
             // Num_1
             // 
             this.Num_1.AutoSize = true;
+            this.Num_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.Num_1.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.Num_1.Location = new System.Drawing.Point(32, 19);
             this.Num_1.Name = "Num_1";
