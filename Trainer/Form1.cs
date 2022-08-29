@@ -208,17 +208,17 @@ namespace Trainer
             globals.NewBytes_jump = new byte[] { 0xC7, 0x46, 0x18, Modif_Jump[0], Modif_Jump[1], Modif_Jump[2], Modif_Jump[3] };
 
             mem.WriteBytes("ac_client.exe+C2486", globals.originalBytes_jump);
-            VirtualFreeEx(getHandle(), (UIntPtr)globals.Codecavebase, (UIntPtr)0, 0x8000);
+            VirtualFreeEx(getHandle(), (UIntPtr)jump.Codecavebase, (UIntPtr)0, 0x8000);
 
             if (Jump.Checked == true)
             {
-                globals.Codecavebase = mem.CreateCodeCave("ac_client.exe+C2486", globals.newBytes_jump, 7, 1000);
+                jump.Codecavebase = mem.CreateCodeCave("ac_client.exe+C2486", globals.newBytes_jump, 7, 1000);
             }
 
             if (Jump.Checked == false)
             {
                 mem.WriteBytes("ac_client.exe+C2486", globals.originalBytes_jump);
-                VirtualFreeEx(getHandle(), (UIntPtr)globals.Codecavebase, (UIntPtr)0, 0x8000);
+                VirtualFreeEx(getHandle(), (UIntPtr)jump.Codecavebase, (UIntPtr)0, 0x8000);
             }
 
         }
@@ -227,13 +227,13 @@ namespace Trainer
         {
             if (Jump.Checked == true)
             {
-                globals.Codecavebase = mem.CreateCodeCave("ac_client.exe+C2486", globals.newBytes_jump, 7, 1000);
+                jump.Codecavebase = mem.CreateCodeCave("ac_client.exe+C2486", globals.newBytes_jump, 7, 1000);
             }
 
             if (Jump.Checked == false)
             {
                 mem.WriteBytes("ac_client.exe+C2486", globals.originalBytes_jump);
-                VirtualFreeEx(getHandle(), (UIntPtr)globals.Codecavebase, (UIntPtr)0, 0x8000);
+                VirtualFreeEx(getHandle(), (UIntPtr)jump.Codecavebase, (UIntPtr)0, 0x8000);
             }
         }
 
@@ -241,19 +241,23 @@ namespace Trainer
         {
             if (No_Damage.Checked == true)
             {
-                globals.Codecavebase = mem.CreateCodeCave("ac_client.exe+84499", globals.NewBytes_damage, 6, 1000);
+                noDMG.Codecavebase = mem.CreateCodeCave("ac_client.exe+84499", globals.NewBytes_damage, 6, 1000);
             }
 
 
             if (No_Damage.Checked == false)
             {
                 mem.WriteBytes("ac_client.exe+84499", globals.originalBytes_damage);
-                VirtualFreeEx(getHandle(), (UIntPtr)globals.Codecavebase, (UIntPtr)0, 0x8000);
+                VirtualFreeEx(getHandle(), (UIntPtr)noDMG.Codecavebase, (UIntPtr)0, 0x8000);
             }
         }
 
 
+
+
         Globals globals = new Globals();
+        Globals jump = new Globals();
+        Globals noDMG = new Globals();
 
 
 
