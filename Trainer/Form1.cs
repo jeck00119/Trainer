@@ -170,15 +170,24 @@ namespace Trainer
             }
 
             if (Infinite_Ammo.Checked)
-            {
+            {   
+                Infinite_Ammo.ForeColor = System.Drawing.Color.Red;
                 mem.WriteMemory(ammoAdress, "int", "9999");
+            }
+            else
+            {
+                Infinite_Ammo.ForeColor = System.Drawing.Color.DarkCyan;
             }
 
             if (Infinite_Health.Checked)
             {
+                Infinite_Health.ForeColor = System.Drawing.Color.Red;
                 mem.WriteMemory(hpAdress, "int", "1000");
             }
-
+            else
+            {
+                Infinite_Health.ForeColor = System.Drawing.Color.DarkCyan;
+            }
         }
 
         private void BGWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
@@ -228,12 +237,14 @@ namespace Trainer
             if (Jump.Checked == true)
             {
                 jump.Codecavebase = mem.CreateCodeCave("ac_client.exe+C2486", globals.newBytes_jump, 7, 1000);
+                Jump.ForeColor = System.Drawing.Color.Red;
             }
 
             if (Jump.Checked == false)
             {
                 mem.WriteBytes("ac_client.exe+C2486", globals.originalBytes_jump);
                 VirtualFreeEx(getHandle(), (UIntPtr)jump.Codecavebase, (UIntPtr)0, 0x8000);
+                Jump.ForeColor = System.Drawing.Color.DarkCyan;
             }
         }
 
@@ -242,6 +253,7 @@ namespace Trainer
             if (No_Damage.Checked == true)
             {
                 noDMG.Codecavebase = mem.CreateCodeCave("ac_client.exe+84499", globals.NewBytes_damage, 6, 1000);
+                No_Damage.ForeColor = System.Drawing.Color.Red;
             }
 
 
@@ -249,6 +261,7 @@ namespace Trainer
             {
                 mem.WriteBytes("ac_client.exe+84499", globals.originalBytes_damage);
                 VirtualFreeEx(getHandle(), (UIntPtr)noDMG.Codecavebase, (UIntPtr)0, 0x8000);
+                No_Damage.ForeColor = System.Drawing.Color.DarkCyan;
             }
         }
 

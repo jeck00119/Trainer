@@ -152,9 +152,9 @@ namespace Trainer
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(1, 45);
+            this.metroPanel1.Location = new System.Drawing.Point(10, 45);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(428, 199);
+            this.metroPanel1.Size = new System.Drawing.Size(416, 199);
             this.metroPanel1.TabIndex = 7;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel1.VerticalScrollbarBarColor = true;
