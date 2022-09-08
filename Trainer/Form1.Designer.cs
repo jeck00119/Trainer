@@ -31,16 +31,17 @@ namespace Trainer
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trainer_Form));
-            this.Walk_Speed = new System.Windows.Forms.CheckBox();
-            this.Zoom = new System.Windows.Forms.CheckBox();
-            this.Jump = new System.Windows.Forms.CheckBox();
             this.BGWorker = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.ProcOpenLabel = new System.Windows.Forms.Label();
+            this.Loading_Label = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.Teleport_CheckBox = new System.Windows.Forms.CheckBox();
+            this.Jump_CheckBox = new System.Windows.Forms.CheckBox();
+            this.Zoom_CheckBox = new System.Windows.Forms.CheckBox();
             this.Fly_NoClip = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.Teleport = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.wpTP_Button = new MetroFramework.Controls.MetroButton();
             this.wpTP_label = new System.Windows.Forms.Label();
@@ -50,48 +51,9 @@ namespace Trainer
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Num_1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.Walk_Speed = new System.Windows.Forms.CheckBox();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Walk_Speed
-            // 
-            this.Walk_Speed.AutoSize = true;
-            this.Walk_Speed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.Walk_Speed.Location = new System.Drawing.Point(100, 47);
-            this.Walk_Speed.Margin = new System.Windows.Forms.Padding(4);
-            this.Walk_Speed.Name = "Walk_Speed";
-            this.Walk_Speed.Size = new System.Drawing.Size(111, 20);
-            this.Walk_Speed.TabIndex = 0;
-            this.Walk_Speed.Text = "Walk Speed";
-            this.Walk_Speed.UseVisualStyleBackColor = false;
-            this.Walk_Speed.CheckedChanged += new System.EventHandler(this.Walk_Speed_CheckedChanged);
-            // 
-            // Zoom
-            // 
-            this.Zoom.AutoSize = true;
-            this.Zoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.Zoom.Location = new System.Drawing.Point(100, 19);
-            this.Zoom.Margin = new System.Windows.Forms.Padding(4);
-            this.Zoom.Name = "Zoom";
-            this.Zoom.Size = new System.Drawing.Size(89, 20);
-            this.Zoom.TabIndex = 1;
-            this.Zoom.Text = "Inf. Zoom";
-            this.Zoom.UseVisualStyleBackColor = false;
-            this.Zoom.CheckedChanged += new System.EventHandler(this.Zoom_CheckedChanged);
-            // 
-            // Jump
-            // 
-            this.Jump.AutoSize = true;
-            this.Jump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.Jump.Location = new System.Drawing.Point(100, 75);
-            this.Jump.Margin = new System.Windows.Forms.Padding(4);
-            this.Jump.Name = "Jump";
-            this.Jump.Size = new System.Drawing.Size(63, 20);
-            this.Jump.TabIndex = 2;
-            this.Jump.Text = "Jump";
-            this.Jump.UseVisualStyleBackColor = false;
-            this.Jump.CheckedChanged += new System.EventHandler(this.Jump_CheckedChanged);
             // 
             // BGWorker
             // 
@@ -103,7 +65,7 @@ namespace Trainer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 43);
+            this.label1.Location = new System.Drawing.Point(8, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 16);
@@ -113,19 +75,44 @@ namespace Trainer
             // ProcOpenLabel
             // 
             this.ProcOpenLabel.AutoSize = true;
-            this.ProcOpenLabel.Location = new System.Drawing.Point(73, 43);
+            this.ProcOpenLabel.Location = new System.Drawing.Point(73, 58);
             this.ProcOpenLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProcOpenLabel.Name = "ProcOpenLabel";
-            this.ProcOpenLabel.Size = new System.Drawing.Size(33, 16);
+            this.ProcOpenLabel.Size = new System.Drawing.Size(0, 16);
             this.ProcOpenLabel.TabIndex = 6;
-            this.ProcOpenLabel.Text = "N/A";
+            // 
+            // Loading_Label
+            // 
+            this.Loading_Label.AutoSize = true;
+            this.Loading_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Loading_Label.ForeColor = System.Drawing.Color.LimeGreen;
+            this.Loading_Label.Location = new System.Drawing.Point(71, 129);
+            this.Loading_Label.Name = "Loading_Label";
+            this.Loading_Label.Size = new System.Drawing.Size(274, 29);
+            this.Loading_Label.TabIndex = 9;
+            this.Loading_Label.Text = "Loading...Please Wait!";
+            this.Loading_Label.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Sienna;
+            this.label7.Location = new System.Drawing.Point(139, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "FFXIV Online";
             // 
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroPanel1.Controls.Add(this.Teleport_CheckBox);
+            this.metroPanel1.Controls.Add(this.Jump_CheckBox);
+            this.metroPanel1.Controls.Add(this.Zoom_CheckBox);
             this.metroPanel1.Controls.Add(this.Fly_NoClip);
             this.metroPanel1.Controls.Add(this.label6);
-            this.metroPanel1.Controls.Add(this.Teleport);
             this.metroPanel1.Controls.Add(this.label3);
             this.metroPanel1.Controls.Add(this.wpTP_Button);
             this.metroPanel1.Controls.Add(this.wpTP_label);
@@ -135,20 +122,56 @@ namespace Trainer
             this.metroPanel1.Controls.Add(this.label4);
             this.metroPanel1.Controls.Add(this.label2);
             this.metroPanel1.Controls.Add(this.Num_1);
-            this.metroPanel1.Controls.Add(this.Jump);
-            this.metroPanel1.Controls.Add(this.Zoom);
             this.metroPanel1.Controls.Add(this.Walk_Speed);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(10, 62);
+            this.metroPanel1.Location = new System.Drawing.Point(11, 77);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(416, 197);
-            this.metroPanel1.TabIndex = 7;
+            this.metroPanel1.Size = new System.Drawing.Size(370, 197);
+            this.metroPanel1.TabIndex = 10;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // Teleport_CheckBox
+            // 
+            this.Teleport_CheckBox.AutoSize = true;
+            this.Teleport_CheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.Teleport_CheckBox.Location = new System.Drawing.Point(100, 130);
+            this.Teleport_CheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.Teleport_CheckBox.Name = "Teleport_CheckBox";
+            this.Teleport_CheckBox.Size = new System.Drawing.Size(179, 20);
+            this.Teleport_CheckBox.TabIndex = 22;
+            this.Teleport_CheckBox.Text = "Teleport To Locations";
+            this.Teleport_CheckBox.UseVisualStyleBackColor = false;
+            // 
+            // Jump_CheckBox
+            // 
+            this.Jump_CheckBox.AutoSize = true;
+            this.Jump_CheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.Jump_CheckBox.Location = new System.Drawing.Point(100, 74);
+            this.Jump_CheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.Jump_CheckBox.Name = "Jump_CheckBox";
+            this.Jump_CheckBox.Size = new System.Drawing.Size(63, 20);
+            this.Jump_CheckBox.TabIndex = 21;
+            this.Jump_CheckBox.Text = "Jump";
+            this.Jump_CheckBox.UseVisualStyleBackColor = false;
+            this.Jump_CheckBox.CheckedChanged += new System.EventHandler(this.Jump_CheckBox_CheckedChanged);
+            // 
+            // Zoom_CheckBox
+            // 
+            this.Zoom_CheckBox.AutoSize = true;
+            this.Zoom_CheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.Zoom_CheckBox.Location = new System.Drawing.Point(100, 19);
+            this.Zoom_CheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.Zoom_CheckBox.Name = "Zoom_CheckBox";
+            this.Zoom_CheckBox.Size = new System.Drawing.Size(89, 20);
+            this.Zoom_CheckBox.TabIndex = 20;
+            this.Zoom_CheckBox.Text = "Inf. Zoom";
+            this.Zoom_CheckBox.UseVisualStyleBackColor = false;
+            this.Zoom_CheckBox.CheckedChanged += new System.EventHandler(this.Zoom_CheckBox_CheckedChanged);
             // 
             // Fly_NoClip
             // 
@@ -173,18 +196,6 @@ namespace Trainer
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 18;
             this.label6.Text = "Num 6";
-            // 
-            // Teleport
-            // 
-            this.Teleport.AutoSize = true;
-            this.Teleport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.Teleport.Location = new System.Drawing.Point(100, 131);
-            this.Teleport.Margin = new System.Windows.Forms.Padding(4);
-            this.Teleport.Name = "Teleport";
-            this.Teleport.Size = new System.Drawing.Size(173, 20);
-            this.Teleport.TabIndex = 17;
-            this.Teleport.Text = "Teleport to Locations";
-            this.Teleport.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -219,23 +230,29 @@ namespace Trainer
             // trackBar_Speed
             // 
             this.trackBar_Speed.BackColor = System.Drawing.Color.Transparent;
+            this.trackBar_Speed.Enabled = false;
             this.trackBar_Speed.Location = new System.Drawing.Point(218, 47);
+            this.trackBar_Speed.Minimum = 6;
             this.trackBar_Speed.Name = "trackBar_Speed";
             this.trackBar_Speed.Size = new System.Drawing.Size(75, 23);
             this.trackBar_Speed.TabIndex = 12;
             this.trackBar_Speed.Text = "trackBar_Speed";
             this.trackBar_Speed.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.trackBar_Speed.Value = 6;
             this.trackBar_Speed.ValueChanged += new System.EventHandler(this.trackBar_Speed_ValueChanged);
             // 
             // trackBar_Jump
             // 
             this.trackBar_Jump.BackColor = System.Drawing.Color.Transparent;
+            this.trackBar_Jump.Enabled = false;
             this.trackBar_Jump.Location = new System.Drawing.Point(170, 76);
+            this.trackBar_Jump.Minimum = 10;
             this.trackBar_Jump.Name = "trackBar_Jump";
             this.trackBar_Jump.Size = new System.Drawing.Size(75, 23);
             this.trackBar_Jump.TabIndex = 11;
             this.trackBar_Jump.Text = "trackBar_Jump";
             this.trackBar_Jump.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.trackBar_Jump.Value = 10;
             this.trackBar_Jump.ValueChanged += new System.EventHandler(this.trackBar_Jump_ValueChanged);
             // 
             // label5
@@ -282,27 +299,29 @@ namespace Trainer
             this.Num_1.TabIndex = 6;
             this.Num_1.Text = "Num 1";
             // 
-            // label7
+            // Walk_Speed
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Sienna;
-            this.label7.Location = new System.Drawing.Point(155, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 20);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "FFXIV Online";
+            this.Walk_Speed.AutoSize = true;
+            this.Walk_Speed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.Walk_Speed.Location = new System.Drawing.Point(100, 47);
+            this.Walk_Speed.Margin = new System.Windows.Forms.Padding(4);
+            this.Walk_Speed.Name = "Walk_Speed";
+            this.Walk_Speed.Size = new System.Drawing.Size(111, 20);
+            this.Walk_Speed.TabIndex = 0;
+            this.Walk_Speed.Text = "Walk Speed";
+            this.Walk_Speed.UseVisualStyleBackColor = false;
+            this.Walk_Speed.CheckedChanged += new System.EventHandler(this.Walk_Speed_CheckedChanged);
             // 
             // Trainer_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 269);
+            this.ClientSize = new System.Drawing.Size(394, 280);
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ProcOpenLabel);
-            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Loading_Label);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.DarkCyan;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -313,6 +332,7 @@ namespace Trainer
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Trainer_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Trainer_Form_Shown);
             this.metroPanel1.ResumeLayout(false);
@@ -323,26 +343,27 @@ namespace Trainer
         }
 
         #endregion
-        private System.Windows.Forms.CheckBox Walk_Speed;
-        private System.Windows.Forms.CheckBox Zoom;
-        private System.Windows.Forms.CheckBox Jump;
         private System.ComponentModel.BackgroundWorker BGWorker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ProcOpenLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Loading_Label;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private System.Windows.Forms.CheckBox Fly_NoClip;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private MetroFramework.Controls.MetroButton wpTP_Button;
+        private System.Windows.Forms.Label wpTP_label;
+        private MetroFramework.Controls.MetroTrackBar trackBar_Speed;
+        private MetroFramework.Controls.MetroTrackBar trackBar_Jump;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Num_1;
-        private MetroFramework.Controls.MetroTrackBar trackBar_Jump;
-        private MetroFramework.Controls.MetroTrackBar trackBar_Speed;
-        private System.Windows.Forms.Label wpTP_label;
-        private MetroFramework.Controls.MetroButton wpTP_Button;
-        private System.Windows.Forms.CheckBox Teleport;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox Fly_NoClip;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox Walk_Speed;
+        private System.Windows.Forms.CheckBox Teleport_CheckBox;
+        private System.Windows.Forms.CheckBox Jump_CheckBox;
+        private System.Windows.Forms.CheckBox Zoom_CheckBox;
     }
 }
 

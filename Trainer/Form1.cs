@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -91,11 +90,11 @@ namespace Trainer
             ProcOpen = mem.OpenProcess("ffxiv_dx11");
             if (!ProcOpen)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(10);
                 return;
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(10);
             BGWorker.ReportProgress(0);
 
         }
@@ -177,9 +176,6 @@ namespace Trainer
 
                 else if (Key1 == Key.LeftAlt)
                     LoadLocation(Key2);
-
-                else if (Key1 == Key.LeftAlt && Key2 == Key.F)
-                    Fly_NoClip.Checked = !Fly_NoClip.Checked;
 
             }
 
@@ -263,59 +259,82 @@ namespace Trainer
             string Yaddress = "ffxiv_dx11.exe+02043638,A8";
             string Zaddress = "ffxiv_dx11.exe+02043638,A4";
 
-            if (!(teleport.X == 0f && teleport.Y == 0f))
+
+            if (Key == Key.NumPad1)
             {
-
-                if (Key == Key.NumPad1)
+                if (!(teleport.Xpos1 == 0 && teleport.Ypos1 == 0))
                 {
-
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos1.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos1.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos1.ToString());
                 }
-                else if (Key == Key.NumPad2)
+            }
+            else if (Key == Key.NumPad2)
+            {
+                if (!(teleport.Xpos2 == 0 && teleport.Ypos2 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos2.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos2.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos2.ToString());
                 }
-                else if (Key == Key.NumPad3)
+            }
+            else if (Key == Key.NumPad3 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos3 == 0 && teleport.Ypos3 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos3.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos3.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos3.ToString());
                 }
-                else if (Key == Key.NumPad4)
+            }
+            else if (Key == Key.NumPad4 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos4 == 0 && teleport.Ypos4 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos4.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos4.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos4.ToString());
                 }
-                else if (Key == Key.NumPad5)
+            }
+            else if (Key == Key.NumPad5 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos5 == 0 && teleport.Ypos5 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos5.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos5.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos5.ToString());
                 }
-                else if (Key == Key.NumPad6)
+            }
+            else if (Key == Key.NumPad6 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos6 == 0 && teleport.Ypos6 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos6.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos6.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos6.ToString());
                 }
-                else if (Key == Key.NumPad7)
+            }
+            else if (Key == Key.NumPad7 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos7 == 0 && teleport.Ypos7 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos7.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos7.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos7.ToString());
                 }
-                else if (Key == Key.NumPad8)
+            }
+            else if (Key == Key.NumPad8 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos8 == 0 && teleport.Ypos8 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos8.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos8.ToString());
                     mem.WriteMemory(Zaddress, "float", teleport.Zpos8.ToString());
                 }
-                else if (Key == Key.NumPad9)
+            }
+            else if (Key == Key.NumPad9 && !(teleport.X == 0f && teleport.Y == 0f))
+            {
+                if (!(teleport.Xpos9 == 0 && teleport.Ypos9 == 0))
                 {
                     mem.WriteMemory(Xaddress, "float", teleport.Xpos9.ToString());
                     mem.WriteMemory(Yaddress, "float", teleport.Ypos9.ToString());
@@ -338,13 +357,58 @@ namespace Trainer
             public long ProcessBaseAddress64 { get => processBaseAddress64; set => processBaseAddress64 = value; }
         }
 
+        private void AOBScans()
+        {
+            aobScan.AobResult_zoom = mem.AoBScan("F3 0F 10 9B 1C 01 00 00 4C 8D 45 C7", false, true).Result.FirstOrDefault().ToString("X");
+
+            aobScan.AobResult_speed = mem.AoBScan("F3 0F 11 73 44 0F", false, true).Result.FirstOrDefault().ToString("X");
+
+            aobScan.AobResult_jump_height = mem.AoBScan("F3 0F 11 B3 E4 00 00 00 40", false, true).Result.FirstOrDefault().ToString("X");
+            aobScan.AobResult_jump_collision = mem.AoBScan("89 8B D8 00 00 00 48 8B CB", false, true).Result.FirstOrDefault().ToString("X");
+
+            aobScan.AobResult_wpTP = mem.AoBScan("8B 10 89 53 30 8B 50 04 89 53 34 8B 40 08 89 43 38 48 83 C4 20 5B C3 C6 43 20 01 45 33 C9", false, true).Result.FirstOrDefault().ToString("X");
+
+            aobScan.AobResult_NopZ = mem.AoBScan("F3 0F 11 91 A4 00 00 00 F3 0F 11 99 A8 00 00 00 F6 81 ?? ?? ?? ?? ??", false, true).Result.FirstOrDefault().ToString("X");
+            aobScan.AobResult_NoGravity = mem.AoBScan("8B 81 D0 00 00 00 83 E8 02 83 F8 02 0F", false, true).Result.FirstOrDefault().ToString("X");
+            aobScan.AobResult_NoCollisionBarrier = mem.AoBScan("4C 8B DC 55 56 57 41 55 41 56 49 8D AB ?? FE FF FF 48 81 EC ?? 02 00 00 F3 0F 10 05 ?? ?? ?? 00 48 8D 82 90 06 00 00 F3 41 0F 10 21", false, true).Result.FirstOrDefault().ToString("X");
+            aobScan.AobResult_NoTerrainCollision = mem.AoBScan("48 8B C4 48 89 58 08 48 89 70 10 48 89 78 18 4C 89 70 20 55 48 8D 68 B9 48 81 EC 90 00 00 00 F3 0F ?? ?? ?? ?? ?? ?? 4D 8B F1 48 8B 5D 77 49 8B F8", false, true).Result.FirstOrDefault().ToString("X");
+        }
+
+        private void EnableOptions()
+        {
+            Zoom_CheckBox.AutoCheck = true;
+            Walk_Speed.AutoCheck = true;
+            Jump_CheckBox.AutoCheck = true;
+            wpTP_Button.Enabled = true;
+            Teleport_CheckBox.AutoCheck = true;
+            Fly_NoClip.AutoCheck = true;
+        }
+
+        private void DisableOptions()
+        {
+            Zoom_CheckBox.Checked = false;
+            Zoom_CheckBox.AutoCheck = false;
+            Walk_Speed.Checked = false;
+            Walk_Speed.AutoCheck = false;
+            trackBar_Speed.Enabled = false;
+            Jump_CheckBox.Checked = false;
+            Jump_CheckBox.AutoCheck = false;
+            trackBar_Jump.Enabled = false;
+            wpTP_Button.Enabled = false;
+            Teleport_CheckBox.Checked = false;
+            Teleport_CheckBox.AutoCheck = false;
+            Teleport_CheckBox.ForeColor = System.Drawing.Color.DarkCyan;
+            Fly_NoClip.Checked = false;
+            Fly_NoClip.AutoCheck = false;
+        }
+
 
         public class Globals
         {
 
-            
-            private bool once = false;
-            private bool reattachProcess = false;
+
+            private bool runOnceOpen = false;
+            private bool runOnceClose = false;
             private int[] pointerOffsets = { 0x00 };
             private long baseAddress;
             private long pointerAddress;
@@ -382,10 +446,11 @@ namespace Trainer
             private float ypos9;
             private float zpos9;
 
-          
+
             public UIntPtr codecavebase;
 
             private byte[] originalBytes_zoom = { 0xF3, 0x0F, 0x10, 0x9B, 0x1C, 0x01, 0x00, 0x00 };
+            private byte[] originalBytes_zoom_value = { 0x50, 0xB8, 0x00, 0x00, 0xA0, 0x41, 0x89, 0x83, 0x1C, 0x01, 0x00, 0x00, 0x58, 0xF3, 0x0F, 0x10, 0x9B, 0x1C, 0x01, 0x00, 0x00 };
             private byte[] originalBytes_speed = { 0xF3, 0x0F, 0x11, 0x73, 0x44, 0x0F };
             private byte[] originalBytes_jump_height = { 0xF3, 0x0F, 0x11, 0xB3, 0xE4, 0x00, 0x00, 0x00, 0x40 };
             private byte[] originalBytes_jump_collision = { 0x89, 0x8B, 0xD8, 0x00, 0x00, 0x00, 0x48, 0x8B, 0xCB };
@@ -396,7 +461,7 @@ namespace Trainer
             private byte[] originalBytes_NoTerrainCollision = { 0x48, 0x8B, 0xC4, 0x48, 0x89, 0x58, 0x08 };
 
             private byte[] newBytes_zoom = { 0x50, 0xB8, 0x00, 0x00, 0x7A, 0x44, 0x89, 0x83, 0x1C, 0x01, 0x00, 0x00, 0x58, 0xF3, 0x0F, 0x10, 0x9B, 0x1C, 0x01, 0x00, 0x00 };
-            private byte[] newBytes_speed = { 0x50, 0xB8, 0x00, 0x00, 0x20, 0x41, 0x89, 0x43, 0x44, 0x58 };
+            private byte[] newBytes_speed = { 0x50, 0xB8, 0x00, 0x00, 0xC0, 0x40, 0x89, 0x43, 0x44, 0x58 };
             private byte[] newBytes_jump_height = { 0x50, 0xB8, 0x00, 0x00, 0x20, 0x41, 0x89, 0x83, 0xE4, 0x00, 0x00, 0x00, 0x58 };
             private byte[] newBytes_jump_collision = { 0xC7, 0x83, 0xD8, 0x00, 0x00, 0x00, 0x80, 0x4F, 0xC3, 0x47 };
             private byte[] newBytes_wpTP = { 0xC7, 0x40, 0x04, 0x00, 0x00, 0xC8, 0x42, 0xC7, 0x00, 0x00, 0x00, 0x02, 0x43, 0xC7, 0x40, 0x08, 0x00, 0x80, 0x8C, 0x43, 0x8B, 0x10, 0x89, 0x53, 0x30 };
@@ -405,11 +470,19 @@ namespace Trainer
             private byte[] newBytes_NoCollisionBarriers = { 0xC3, 0x90, 0x90, 0x55, 0x56 };
             private byte[] newBytes_NoTerrainCollision = { 0xC3, 0x90, 0x90, 0x48, 0x89, 0x58, 0x08 };
 
+
+
+            public long BaseAddress { get => baseAddress; set => baseAddress = value; }
+            public long PointerAddress { get => pointerAddress; set => pointerAddress = value; }
+            public int[] PointerOffsets { get => pointerOffsets; set => pointerOffsets = value; }
+            public byte[] ModifBytes { get => modifBytes; set => modifBytes = value; }
+            public bool RunOnceOpen { get => runOnceOpen; set => runOnceOpen = value; }
+            public bool RunOnceClose { get => runOnceClose; set => runOnceClose = value; }
             public float WpX { get => WpX1; set => WpX1 = value; }
             public float WpY { get => WpY1; set => WpY1 = value; }
-            public bool Once { get => once; set => once = value; }
             public UIntPtr Codecavebase { get => codecavebase; set => codecavebase = value; }
             public byte[] OriginalBytes_zoom { get => originalBytes_zoom; set => originalBytes_zoom = value; }
+            public byte[] OriginalBytes_zoom_value { get => originalBytes_zoom_value; set => originalBytes_zoom_value = value; }
             public byte[] OriginalBytes_speed { get => originalBytes_speed; set => originalBytes_speed = value; }
             public byte[] OriginalBytes_jump_height { get => originalBytes_jump_height; set => originalBytes_jump_height = value; }
             public byte[] OriginalBytes_jump_collision { get => originalBytes_jump_collision; set => originalBytes_jump_collision = value; }
@@ -459,11 +532,8 @@ namespace Trainer
             public float X { get => x; set => x = value; }
             public float Y { get => y; set => y = value; }
             public float Z { get => z; set => z = value; }
-            public int[] PointerOffsets { get => pointerOffsets; set => pointerOffsets = value; }
-            public long BaseAddress { get => baseAddress; set => baseAddress = value; }
-            public long PointerAddress { get => pointerAddress; set => pointerAddress = value; }
-            public byte[] ModifBytes { get => modifBytes; set => modifBytes = value; }
-            public bool ReattachProcess { get => reattachProcess; set => reattachProcess = value; }
+
+
         }
 
 
@@ -492,7 +562,7 @@ namespace Trainer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            trackBar_Jump.ValueChanged += trackBar_Jump_ValueChanged;
+
         }
 
 
@@ -502,77 +572,42 @@ namespace Trainer
             BGWorker.RunWorkerAsync();
         }
 
+
         float inc_Z = 0;
         float dec_Z = 0;
+        string Zaddress = "ffxiv_dx11.exe+02043638,A4";
+
 
         private void BGWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
+
             if (ProcOpen)
             {
 
-                ProcOpenLabel.ForeColor = System.Drawing.Color.Green;
-                ProcOpenLabel.Text = "Game Found";
 
-                if (!globals.ReattachProcess)
+                if (!globals.RunOnceOpen)
                 {
-                    Zoom.AutoCheck = true;
-                    Walk_Speed.AutoCheck = true;
-                    trackBar_Speed.Enabled = true;
-                    trackBar_Jump.Enabled = true;
-                    Jump.AutoCheck = true;
-                    wpTP_Button.Enabled = true;
-                    Teleport.AutoCheck = true;
-                    Fly_NoClip.AutoCheck = true;
+                    ProcOpenLabel.ForeColor = System.Drawing.Color.Green;
+                    ProcOpenLabel.Text = "Game Found";
 
-                    globals.ReattachProcess = true;
+                    AOBScans();
+                    EnableOptions();
+
+                    globals.RunOnceOpen = true;
+                    globals.RunOnceClose = false;
                 }
 
-                if (!Walk_Speed.Checked)
-                    trackBar_Speed.Enabled = false;
-                else
-                    trackBar_Speed.Enabled = true;
 
-                if (!Jump.Checked)
-                    trackBar_Jump.Enabled = false;
-                else
-                    trackBar_Jump.Enabled = true;
-
-                if(!globals.Once)
-                {
-
-                    aobScan.AobResult_zoom = mem.AoBScan("F3 0F 10 9B 1C 01 00 00 4C 8D 45 C7", false, true).Result.FirstOrDefault().ToString("X");
-
-                    aobScan.AobResult_speed = mem.AoBScan("F3 0F 11 73 44 0F", false, true).Result.FirstOrDefault().ToString("X");
-
-                    aobScan.AobResult_jump_height = mem.AoBScan("F3 0F 11 B3 E4 00 00 00 40", false, true).Result.FirstOrDefault().ToString("X");
-                    aobScan.AobResult_jump_collision = mem.AoBScan("89 8B D8 00 00 00 48 8B CB", false, true).Result.FirstOrDefault().ToString("X");
-
-                    aobScan.AobResult_wpTP = mem.AoBScan("8B 10 89 53 30 8B 50 04 89 53 34 8B 40 08 89 43 38 48 83 C4 20 5B C3 C6 43 20 01 45 33 C9", false, true).Result.FirstOrDefault().ToString("X");
-
-                    aobScan.AobResult_NopZ = mem.AoBScan("F3 0F 11 91 A4 00 00 00 F3 0F 11 99 A8 00 00 00 F6 81 ?? ?? ?? ?? ??", false, true).Result.FirstOrDefault().ToString("X");
-                    aobScan.AobResult_NoGravity = mem.AoBScan("8B 81 D0 00 00 00 83 E8 02 83 F8 02 0F", false, true).Result.FirstOrDefault().ToString("X");
-                    aobScan.AobResult_NoCollisionBarrier = mem.AoBScan("4C 8B DC 55 56 57 41 55 41 56 49 8D AB ?? FE FF FF 48 81 EC ?? 02 00 00 F3 0F 10 05 ?? ?? ?? 00 48 8D 82 90 06 00 00 F3 41 0F 10 21", false, true).Result.FirstOrDefault().ToString("X");
-                    aobScan.AobResult_NoTerrainCollision = mem.AoBScan("48 8B C4 48 89 58 08 48 89 70 10 48 89 78 18 4C 89 70 20 55 48 8D 68 B9 48 81 EC 90 00 00 00 F3 0F ?? ?? ?? ?? ?? ?? 4D 8B F1 48 8B 5D 77 49 8B F8", false, true).Result.FirstOrDefault().ToString("X");
-
-
-                    globals.Once = true;
-
-                }
-                
-
-           
-
-
-                CheckBoxToggleOption(Zoom, Key.NumPad1);
+                CheckBoxToggleOption(Zoom_CheckBox, Key.NumPad1);
                 CheckBoxToggleOption(Walk_Speed, Key.NumPad2);
-                CheckBoxToggleOption(Jump, Key.NumPad3);
+                CheckBoxToggleOption(Jump_CheckBox, Key.NumPad3);
                 ButtonActivateOption(wpTP_Button, Key.NumPad4);
-                CheckBoxToggleOption(Teleport, Key.NumPad5);
+                CheckBoxToggleOption(Teleport_CheckBox, Key.NumPad5);
                 CheckBoxToggleOption(Fly_NoClip, Key.NumPad6);
 
-                if (Teleport.Checked == true)
-                {   
-                    Teleport.ForeColor = System.Drawing.Color.Red;
+                if (Teleport_CheckBox.Checked == true)
+                {
+                    Teleport_CheckBox.ForeColor = System.Drawing.Color.Red;
 
 
 
@@ -596,16 +631,16 @@ namespace Trainer
                     CheckKeyCombination(Key.LeftAlt, Key.NumPad8);
                     CheckKeyCombination(Key.LeftAlt, Key.NumPad9);
 
-                        
+
                 }
                 else
-                    Teleport.ForeColor = System.Drawing.Color.DarkCyan;
+                    Teleport_CheckBox.ForeColor = System.Drawing.Color.DarkCyan;
+
 
                 if (Fly_NoClip.Checked == true)
                 {
-                    
+
                     fly.Z = mem.ReadFloat("ffxiv_dx11.exe+02043638,A4");
-                    string Zaddress = "ffxiv_dx11.exe+02043638,A4";
 
 
                     if (Keyboard.IsKeyDown(Key.Space))
@@ -613,17 +648,12 @@ namespace Trainer
                         inc_Z = fly.Z + 2;
                         mem.WriteMemory(Zaddress, "float", inc_Z.ToString());
                     }
-                    else if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                    else if (Keyboard.IsKeyDown(Key.LeftShift))
                     {
                         dec_Z = fly.Z - 2;
                         mem.WriteMemory(Zaddress, "float", dec_Z.ToString());
                     }
                 }
-                else
-                    Fly_NoClip.ForeColor = System.Drawing.Color.DarkCyan;
-
-
-
 
 
             }
@@ -632,64 +662,74 @@ namespace Trainer
 
         private void BGWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+
             if (!ProcOpen)
             {
-                ProcOpenLabel.ForeColor = System.Drawing.Color.Red;
-                ProcOpenLabel.Text = "Game Not Found";
 
-                if (globals.ReattachProcess)
+
+                if (!globals.RunOnceClose)
                 {
+                    ProcOpenLabel.ForeColor = System.Drawing.Color.Red;
+                    ProcOpenLabel.Text = "Game Not Found";
+                    DisableOptions();
 
-                    Zoom.Checked = false;
-                    Zoom.AutoCheck = false;
-                    Walk_Speed.Checked = false;
-                    Walk_Speed.AutoCheck = false;
-                    trackBar_Speed.Enabled = false;
-                    Jump.Checked = false;
-                    Jump.AutoCheck = false;
-                    trackBar_Jump.Enabled = false;
-                    wpTP_Button.Enabled = false;
-                    Teleport.Checked = false;
-                    Teleport.AutoCheck = false;
-                    Teleport.ForeColor = System.Drawing.Color.DarkCyan;
-                    Fly_NoClip.Checked = false;
-                    Fly_NoClip.AutoCheck = false;
-
-                    globals.ReattachProcess = false;
+                    globals.RunOnceOpen = false;
+                    globals.RunOnceClose = true;
                 }
             }
             BGWorker.RunWorkerAsync();
         }
 
 
-
-
-        private void Zoom_CheckedChanged(object sender, EventArgs e)
+        private void Zoom_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (Zoom.Checked == true)
+            if (Zoom_CheckBox.Checked == true)
             {
-                zoom.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_zoom, zoom.NewBytes_zoom, 8, 1000);
-                Zoom.ForeColor = System.Drawing.Color.Red;
-
+                try
+                {
+                    zoom.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_zoom, zoom.NewBytes_zoom, 8, 1000);
+                    Zoom_CheckBox.ForeColor = System.Drawing.Color.Red;
+                }
+                catch
+                {
+                    Zoom_CheckBox.Checked = false;
+                    MessageBox.Show("ZOOM ERROR", "Trainer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            if (Zoom.Checked == false)
+            if (Zoom_CheckBox.Checked == false)
             {
+
                 mem.WriteBytes(aobScan.AobResult_zoom, zoom.OriginalBytes_zoom);
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)zoom.Codecavebase, (UIntPtr)0, 0x8000);
-                Zoom.ForeColor = System.Drawing.Color.DarkCyan;
+                zoom.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_zoom, zoom.OriginalBytes_zoom_value, 8, 1000); // Reset original value
+                Thread.Sleep(100);
+                mem.WriteBytes(aobScan.AobResult_zoom, zoom.OriginalBytes_zoom);
+                VirtualFreeEx(mem.mProc.Handle, (UIntPtr)zoom.Codecavebase, (UIntPtr)0, 0x8000);
+                Zoom_CheckBox.ForeColor = System.Drawing.Color.DarkCyan;
 
             }
+
         }
+
 
         private void Walk_Speed_CheckedChanged(object sender, EventArgs e)
         {
 
             if (Walk_Speed.Checked == true)
             {
-                speed.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_speed, speed.NewBytes_speed, 5, 1000);
-                Walk_Speed.ForeColor = System.Drawing.Color.Red;
+                try
+                {
+                    speed.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_speed, speed.NewBytes_speed, 5, 1000);
+                    Walk_Speed.ForeColor = System.Drawing.Color.Red;
+                    trackBar_Speed.Enabled = true;
+                }
+                catch
+                {
+                    Walk_Speed.Checked = false;
+                    MessageBox.Show("SPEED ERROR", "Trainer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
 
             if (Walk_Speed.Checked == false)
@@ -697,6 +737,7 @@ namespace Trainer
                 mem.WriteBytes(aobScan.AobResult_speed, speed.OriginalBytes_speed);
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)speed.Codecavebase, (UIntPtr)0, 0x8000);
                 Walk_Speed.ForeColor = System.Drawing.Color.DarkCyan;
+                trackBar_Speed.Enabled = false;
             }
         }
 
@@ -712,26 +753,36 @@ namespace Trainer
 
         }
 
-        private void Jump_CheckedChanged(object sender, EventArgs e)
+        private void Jump_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
-
-            if (Jump.Checked == true)
+            if (Jump_CheckBox.Checked == true)
             {
-                jump_height.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_jump_height, jump.NewBytes_jump_height, 8, 1000);
-                jump_collision.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_jump_collision, jump.NewBytes_jump_collision, 6, 1000);
-                Jump.ForeColor = System.Drawing.Color.Red;
+                try
+                {
+                    jump_height.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_jump_height, jump.NewBytes_jump_height, 8, 1000);
+                    jump_collision.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_jump_collision, jump.NewBytes_jump_collision, 6, 1000);
+                    Jump_CheckBox.ForeColor = System.Drawing.Color.Red;
+                    trackBar_Jump.Enabled = true;
+                }
+                catch
+                {
+                    Jump_CheckBox.Checked = false;
+                    MessageBox.Show("JUMP ERROR", "Trainer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
 
-            if (Jump.Checked == false)
+            if (Jump_CheckBox.Checked == false)
             {
                 mem.WriteBytes(aobScan.AobResult_jump_height, jump.OriginalBytes_jump_height);
                 mem.WriteBytes(aobScan.AobResult_jump_collision, jump.OriginalBytes_jump_collision);
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)jump_height.Codecavebase, (UIntPtr)0, 0x8000);
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)jump_collision.Codecavebase, (UIntPtr)0, 0x8000);
-                Jump.ForeColor = System.Drawing.Color.DarkCyan;
+                Jump_CheckBox.ForeColor = System.Drawing.Color.DarkCyan;
+                trackBar_Jump.Enabled = false;
             }
         }
+
 
         private void trackBar_Jump_ValueChanged(object sender, EventArgs e)
         {
@@ -748,24 +799,29 @@ namespace Trainer
 
         private void wpTP_Button_Click(object sender, EventArgs e)
         {
-
-
             waypoint.WpX = mem.ReadFloat("ffxiv_dx11.exe+0201DB70,0x1E8,0x30,0x8,0x37FC");
             waypoint.WpY = mem.ReadFloat("ffxiv_dx11.exe+0201DB70,0x1E8,0x30,0x8,0x37F8");
 
             if ((waypoint.WpX < 1500f && waypoint.WpY < 1500f) && (waypoint.WpX != 0f && waypoint.WpY != 0f) && (waypoint.WpX > -1500f && waypoint.WpY > -1500f))
             {
+                try
+                {
+                    var Modif_WPx = ModifValue((int)waypoint.WpX);
+                    var Modif_WPy = ModifValue((int)waypoint.WpY);
 
-                var Modif_WPx = ModifValue((int)waypoint.WpX);
-                var Modif_WPy = ModifValue((int)waypoint.WpY);
+                    waypoint.NewBytes_wpTP = new byte[] { 0xC7, 0x40, 0x04, 0x00, 0x00, 0xC8, 0x42, 0xC7, 0x00, Modif_WPy[0], Modif_WPy[1], Modif_WPy[2], Modif_WPy[3], 0xC7, 0x40, 0x08, Modif_WPx[0], Modif_WPx[1], Modif_WPx[2], Modif_WPx[3], 0x8B, 0x10, 0x89, 0x53, 0x30 };
 
-                waypoint.NewBytes_wpTP = new byte[] { 0xC7, 0x40, 0x04, 0x00, 0x00, 0xC8, 0x42, 0xC7, 0x00, Modif_WPy[0], Modif_WPy[1], Modif_WPy[2], Modif_WPy[3], 0xC7, 0x40, 0x08, Modif_WPx[0], Modif_WPx[1], Modif_WPx[2], Modif_WPx[3], 0x8B, 0x10, 0x89, 0x53, 0x30 };
+                    waypoint.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_wpTP, waypoint.NewBytes_wpTP, 5, 1000);
 
-                waypoint.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_wpTP, waypoint.NewBytes_wpTP, 5, 1000);
+                    Thread.Sleep(500);
+                    mem.WriteBytes(aobScan.AobResult_wpTP, waypoint.OriginalBytes_wpTP);
+                    VirtualFreeEx(mem.mProc.Handle, (UIntPtr)waypoint.Codecavebase, (UIntPtr)0, 0x8000);
+                }
+                catch
+                {
+                    MessageBox.Show("WPTP ERROR", "Trainer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                Thread.Sleep(500);
-                mem.WriteBytes(aobScan.AobResult_wpTP, waypoint.OriginalBytes_wpTP);
-                VirtualFreeEx(mem.mProc.Handle, (UIntPtr)waypoint.Codecavebase, (UIntPtr)0, 0x8000);
             }
         }
 
@@ -773,33 +829,37 @@ namespace Trainer
         private void Fly_NoClip_CheckedChanged(object sender, EventArgs e)
         {
 
-
-
             if (Fly_NoClip.Checked == true)
             {
+                try
+                {
+                    ProcessInfo processInfo = new ProcessInfo();
+                    fly.BaseAddress = 0x02043638;
+                    fly.PointerOffsets = new[] { 0x00 };
+                    fly.BaseAddress = processInfo.ProcessBaseAddress64 + fly.BaseAddress;
+                    fly.PointerAddress = GetRealAddress(processInfo.ProcessHandle, (IntPtr)fly.BaseAddress, fly.PointerOffsets);
+                    fly.ModifBytes = Convert64AddressToByteArray(fly.PointerAddress);
 
-                ProcessInfo processInfo = new ProcessInfo();
-                fly.BaseAddress = 0x02043638;
-                fly.PointerOffsets = new[] { 0x00 };
-                fly.BaseAddress = processInfo.ProcessBaseAddress64 + fly.BaseAddress;
-                fly.PointerAddress = GetRealAddress(processInfo.ProcessHandle, (IntPtr)fly.BaseAddress, fly.PointerOffsets);
-                fly.ModifBytes = Convert64AddressToByteArray(fly.PointerAddress);
+                    /*
+                    Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[0]));
+                    Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[1]));
+                    Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[2]));
+                    Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[3]));
+                    */
+                    var Modif_NopZ = fly.ModifBytes;
 
-                /*
-                Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[0]));
-                Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[1]));
-                Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[2]));
-                Console.WriteLine(string.Format("{0:X2}", fly.ModifBytes[3]));
-                */
-                var Modif_NopZ = fly.ModifBytes;
-                                                                                                                        
-                fly.NewBytes_NopZ = new byte[] { 0x81, 0xF9, Modif_NopZ[0], Modif_NopZ[1], Modif_NopZ[2], Modif_NopZ[3], 0x75, 0x10, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x81, 0xF9, 0x39, 0x1B, 0x00, 0x00, 0x75, 0x08, 0xF3, 0x0F, 0x11, 0x91, 0xA4, 0x00, 0x00, 0x00 };
-                nopZ.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NopZ, fly.NewBytes_NopZ, 8, 1000);
-                noGravity.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoGravity, fly.NewBytes_NoGravity, 6, 1000);
-                noCollisionBarriers.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoCollisionBarrier, fly.NewBytes_NoCollisionBarriers, 5, 1000);
-                noTerrainCollision.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoTerrainCollision, fly.NewBytes_NoTerrainCollision, 7, 1000);
-                Fly_NoClip.ForeColor = System.Drawing.Color.Red;
-
+                    fly.NewBytes_NopZ = new byte[] { 0x81, 0xF9, Modif_NopZ[0], Modif_NopZ[1], Modif_NopZ[2], Modif_NopZ[3], 0x75, 0x10, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x81, 0xF9, 0x39, 0x1B, 0x00, 0x00, 0x75, 0x08, 0xF3, 0x0F, 0x11, 0x91, 0xA4, 0x00, 0x00, 0x00 };
+                    nopZ.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NopZ, fly.NewBytes_NopZ, 8, 1000);
+                    noGravity.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoGravity, fly.NewBytes_NoGravity, 6, 1000);
+                    noCollisionBarriers.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoCollisionBarrier, fly.NewBytes_NoCollisionBarriers, 5, 1000);
+                    noTerrainCollision.Codecavebase = mem.CreateCodeCave(aobScan.AobResult_NoTerrainCollision, fly.NewBytes_NoTerrainCollision, 7, 1000);
+                    Fly_NoClip.ForeColor = System.Drawing.Color.Red;
+                }
+                catch
+                {
+                    Fly_NoClip.Checked = false;
+                    MessageBox.Show("First join a server!", "Trainer Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
             if (Fly_NoClip.Checked == false)
@@ -813,9 +873,26 @@ namespace Trainer
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)noCollisionBarriers.Codecavebase, (UIntPtr)0, 0x8000);
                 VirtualFreeEx(mem.mProc.Handle, (UIntPtr)noTerrainCollision.Codecavebase, (UIntPtr)0, 0x8000);
                 Fly_NoClip.ForeColor = System.Drawing.Color.DarkCyan;
-     
+
             }
 
+        }
+
+        private void Trainer_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var x = MessageBox.Show(this, "Are you sure you want to close the trainer?", "Closing Trainer", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (x == DialogResult.Cancel)
+                {
+
+                    e.Cancel = true;
+                }
+                else if (x == DialogResult.OK)
+                {
+                    DisableOptions();
+                }
+            }
         }
 
 
